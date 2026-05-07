@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mis tareas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2>Lista de tareas</h2>
+
+        <a href="/logout" class="btn btn-danger">
+            Cerrar sesión
+        </a>
+
+    </div>
+
+    <div class="mb-3">
+
+        <a href="/usuario" class="btn btn-success">
+            Usuario
+        </a>
+
+        <a href="/agregar" class="btn btn-primary">
+            Agregar tarea
+        </a>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            {% if tareas %}
+
+                <ul class="list-group">
+
+                    {% for tarea in tareas %}
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <strong>
+                                {{ tarea.tarea }}
+                            </strong>
+
+                            <br>
+
+                            <small class="text-muted">
+                                Fecha: {{ tarea.fecha }}
+                            </small>
+
+                        </div>
+
+                        <a
+                            href="/eliminar/{{ tarea._id }}"
+                            class="btn btn-danger btn-sm"
+                        >
+                            Eliminar
+                        </a>
+
+                    </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% else %}
+
+                <p class="text-muted">
+                    No tienes tareas registradas
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
